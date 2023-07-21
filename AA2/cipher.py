@@ -1,60 +1,38 @@
-capitalLetters='ABCDEFGHIJKLMNOPQRSTUVWXYZ'
-lowerLetters='abcdefghijklmnopqrstuvwxyz'
-numbers='0123456789'
-specials = '!@#$%^&*()}{\/?'
+AllCharacters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()}{\/?'
 
 def cipher(plaintext, n):
-    global  capitalLetters, lowerLetters, numbers, specials
+    global  AllCharacters
     ciphertext = ''
 
     # Use 'getKey(n)' method to get the key and save it in 'n'
-    n =getKey(n)
+    
 
     for char in plaintext:
-        if char in numbers:
-            currentPosition = numbers.find(char)
-            ciphertext += numbers[(currentPosition + n ) % 10]
-        elif char in lowerLetters:
-            currentPosition = lowerLetters.find(char)
-            ciphertext += lowerLetters[(currentPosition + n )% 26] 
-        elif char in capitalLetters:
-            currentPosition = capitalLetters.find(char)
-            ciphertext += capitalLetters[(currentPosition + n) % 26]
-        elif char in specials: 
-            currentPosition = specials.find(char)
-            ciphertext += specials[(currentPosition + n) % 15]
+        if char in AllCharacters:
+            currentPosition = AllCharacters.find(char)
+            ciphertext += AllCharacters[(currentPosition + n ) % 77]
         else:
             ciphertext += char
 
     return ciphertext
         
 def decipher(ciphertext, n):
-    global capitalLetters, lowerLetters, numbers, specials
+    global  AllCharacters
     plaintext = ""
 
     # Use 'getKey(n)' method to get the key and save it in 'n'
-    n= getKey(n)
+    
 
     for char in ciphertext:
-        if char in numbers:
-            currentPosition = numbers.find(char)
-            plaintext += numbers[(currentPosition - n) % 10]
-        elif char in lowerLetters:
-            currentPosition = lowerLetters.find(char)
-            plaintext += lowerLetters[(currentPosition - n )% 26] 
-        elif char in capitalLetters:
-            currentPosition = capitalLetters.find(char)
-            plaintext += capitalLetters[(currentPosition - n) % 26] 
-            
-        elif char in specials:    
-            currentPosition = specials.find(char)
-            plaintext += specials[(currentPosition - n) % 15]         
+        if char in AllCharacters:
+            currentPosition = AllCharacters.find(char)
+            plaintext += AllCharacters[(currentPosition - n) % 77]       
         else:
             plaintext += char
             
     return(plaintext)
 
-# define getKey(n) function   
+# define getKey(n) function    
 
     # Set the key variable to 0
     
@@ -64,7 +42,8 @@ def decipher(ciphertext, n):
         
            # find ASCII code of "char" using 'ord(char)' and add it to key
            
-    # Else make key equals to n    
+    # Else make key equals to n      
     
 
     # Return the 'key'
+    

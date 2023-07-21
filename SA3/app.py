@@ -47,7 +47,7 @@ def home():
         print("DeCipher Text: ",decipherData)
 
         # Also return cipherData and decipherData
-        return render_template('index.html', blockData = blockData)
+        return render_template('index.html', blockData = blockData, cipherData = cipherData)
 
 if __name__ == '__main__':
     app.run(debug = True, port=4000)
